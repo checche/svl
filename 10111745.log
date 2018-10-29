@@ -1,0 +1,1146 @@
+svl> v = [1,2,3,4,5]
+svl> v+v
+[2,4,6,8,10]
+svl> am_Build 'NC=O'
+svl> sm_Build 'NC=O'
+[563949953421347,563949953421353,563949953421355,563949953421349,563949953421357,563949953421351]
+svl> Atoms[]
+[563949953421323,563949953421329,563949953421331,563949953421325,563949953421333,563949953421327,563949953421347,563949953421353,563949953421355,563949953421349,563949953421357,563949953421351]
+svl> Chains[]
+[563949953421335,563949953421359]
+svl> Residues[]
+[563949953421321,563949953421345]
+svl> rSelected 
+svl> rSelected []
+svl> oDestroy []
+svl> oDestroy
+svl> oDestroy Atoms[]
+[1,1,1,1,1,1,1,1,1,1,1,1]
+svl> oDestroy Chains[]
+[1,1]
+svl> oDestroy 0
+0
+svl> sm_Build 'NC=O'
+[563949953421367,563949953421373,563949953421375,563949953421369,563949953421377,563949953421371]
+svl> mol_Extract Atoms[]
+[ '', [ '', '', '', 1 ], [ '*', 0, " ", 'none', 6 ], [ ['N','H','H','C','H','O'], [0,0,0,0,0,0], ['sp3','sp3','sp3','sp2','sp3','sp2'], [0,0,0,0,0,0], [0,0,0,0,0,0], [ [4,2,3], 1, 1, [1,6,5], 4, 4 ], [0,0,0,0,0,0], ['N','H1','H2','C','H','O'], [0,0,0,0,0,0], [0.00309411,-0.990537,0.656742,0.481921,1.54353,-0.312942], [-0.00681343,0.0818335,0.376198,-0.671091,-0.768266,-1.12842], [0.00468932,0.162611,0.672631,-1.15845,-1.33148,-1.95595] ] ]
+svl> v=['C','H','O',[2,6,1]]
+svl> get[2]
+svl> v[2]
+'H'
+svl> v[4]
+[ [2,6,1] ]
+svl> v[4,2]
+svl> v[[4,2]]
+[ [2,6,1], 'H' ]
+svl> v[[4[2],2]]
+svl> v[4][2]
+[ [] ]
+svl> v[4]
+[ [2,6,1] ]
+svl> w = v[4]
+svl> w
+[ [2,6,1] ]
+svl> w[2]
+[ [] ]
+svl> w[1]
+[ [2,6,1] ]
+svl> cat w
+[2,6,1]
+svl> v
+[ 'C', 'H', 'O', [2,6,1] ]
+svl> v(4)(2)
+6
+svl> put[v,3,'S']
+[ 'C', 'H', 'S', [2,6,1] ]
+svl> put[v,[2,3],['F','S']]
+[ 'C', 'F', 'S', [2,6,1] ]
+svl> aCharge
+svl> aCharge Atoms[]
+[0,0,0,0,0,0]
+svl> aFixed Atoms[]
+[0,0,0,0,0,0]
+svl> aSetFixed [Atoms[], 1]
+svl> aFixed Atoms[]
+[1,1,1,1,1,1]
+svl> aSetFixed [Atoms[], 0]
+svl> aSetFixed [Atoms[], 1]
+Protonate 3D [
+    [] // ... 2351 atoms ...
+,   [] // ... 2351 titrate atoms ...
+,   [] // ... 1223 flip atoms ...
+,   [] // ... 0 protected atoms ...
+,   [] // ... 0 precise atoms ...
+,   [
+    ,   vdw        : '800R3'
+    ,   vdw_cutoff : 10.00
+    ,   ele        : 'GB'
+    ,   ele_cutoff : 15.00
+    ,   d_in       : 2.00
+    ,   d_out      : 80.00
+    ,   T          : 300.00
+    ,   ionC       : 0.10
+    ,   pH         : 7.00
+    ,   rulefile   : '$MOE/lib/protonate3d.dat'
+    ,   verbose    : 1
+    ]
+];
+Protonate 3D (2018.01) started Thu Oct 11 18:33:37 2018
+Protonate 3D: System Partition
+chain    1 : (3EYG) 3EYG.A TRANSFERASE
+    [   1] VAL   865  : -BB- VAL N-term
+    [   2] ASP   866  : -BB- ASP
+    [   3] PRO   867  : -BB- PRO
+    [   4] THR   868  : -BB- THR
+    [   5] HIS   869  : -BB- HIS
+    [   6] PHE   870  : -BB- PHE
+    [   7] GLU   871  : -BB- GLU
+    [   8] LYS   872  : -BB- LYS
+    [   9] ARG   873  : -BB- ARG
+    [  10] PHE   874  : -BB- PHE
+    [  11] LEU   875  : -BB- LEU
+    [  12] LYS   876  : -BB- LYS
+    [  13] ARG   877  : -BB- ARG
+    [  14] ILE   878  : -BB- ILE
+    [  15] ARG   879  : -BB- ARG
+    [  16] ASP   880  : -BB- ASP
+    [  17] LEU   881  : -BB- LEU
+    [  18] GLY   882  : -BB-
+    [  19] GLU   883  : -BB- GLU
+    [  20] GLY   884  : -BB-
+    [  21] HIS   885  : -BB- HIS
+    [  22] PHE   886  : -BB- PHE
+    [  23] GLY   887  : -BB-
+    [  24] LYS   888  : -BB- LYS
+    [  25] VAL   889  : -BB- VAL
+    [  26] GLU   890  : -BB- GLU
+    [  27] LEU   891  : -BB- LEU
+    [  28] CYS   892  : -BB- CYS
+    [  29] ARG   893  : -BB- ARG
+    [  30] TYR   894  : -BB- TYR
+    [  31] ASP   895  : -BB- ASP
+    [  32] PRO   896  : -BB- PRO
+    [  33] GLU   897  : -BB- GLU
+    [  34] GLY   898  : -BB-
+    [  35] ASP   899  : -BB- ASP
+    [  36] ASN   900  : -BB- ASN
+    [  37] THR   901  : -BB- THR
+    [  38] GLY   902  : -BB-
+    [  39] GLU   903  : -BB- GLU
+    [  40] GLN   904  : -BB- GLN
+    [  41] VAL   905  : -BB- VAL
+    [  42] ALA   906  : -BB- ALA
+    [  43] VAL   907  : -BB- VAL
+    [  44] LYS   908  : -BB- LYS
+    [  45] SER   909  : -BB- SER
+    [  46] LEU   910  : -BB- LEU
+    [  47] LYS   911  : -BB- LYS
+    [  48] PRO   912  : -BB- ALA
+    [  54] HIS   918  : -BB- HIS N-term
+    [  55] ILE   919  : -BB- ILE
+    [  56] ALA   920  : -BB- ALA
+    [  57] ASP   921  : -BB- ASP
+    [  58] LEU   922  : -BB- LEU
+    [  59] LYS   923  : -BB- LYS
+    [  60] LYS   924  : -BB- LYS
+    [  61] GLU   925  : -BB- GLU
+    [  62] ILE   926  : -BB- ILE
+    [  63] GLU   927  : -BB- GLU
+    [  64] ILE   928  : -BB- ILE
+    [  65] LEU   929  : -BB- LEU
+    [  66] ARG   930  : -BB- ARG
+    [  67] ASN   931  : -BB- ASN
+    [  68] LEU   932  : -BB- LEU
+    [  69] TYR   933  : -BB- TYR
+    [  70] HIS   934  : -BB- HIS
+    [  71] GLU   935  : -BB- GLU
+    [  72] ASN   936  : -BB- ASN
+    [  73] ILE   937  : -BB- ILE
+    [  74] VAL   938  : -BB- VAL
+    [  75] LYS   939  : -BB- LYS
+    [  76] TYR   940  : -BB- TYR
+    [  77] LYS   941  : -BB- LYS
+    [  78] GLY   942  : -BB-
+    [  79] ILE   943  : -BB- ILE
+    [  80] CYS   944  : -BB- CYS
+    [  81] THR   945  : -BB- THR
+    [  82] GLU   946  : -BB- ALA
+    [  86] ASN   950  : -BB- ALA N-term
+    [  87] GLY   951  : -BB-
+    [  88] ILE   952  : -BB- ILE
+    [  89] LYS   953  : -BB- LYS
+    [  90] LEU   954  : -BB- LEU
+    [  91] ILE   955  : -BB- ILE
+    [  92] MET   956  : -BB- MET
+    [  93] GLU   957  : -BB- GLU
+    [  94] PHE   958  : -BB- PHE
+    [  95] LEU   959  : -BB- LEU
+    [  96] PRO   960  : -BB- PRO
+    [  97] SER   961  : -BB- SER
+    [  98] GLY   962  : -BB-
+    [  99] SER   963  : -BB- SER
+    [ 100] LEU   964  : -BB- LEU
+    [ 101] LYS   965  : -BB- LYS
+    [ 102] GLU   966  : -BB- GLU
+    [ 103] TYR   967  : -BB- TYR
+    [ 104] LEU   968  : -BB- LEU
+    [ 105] PRO   969  : -BB- PRO
+    [ 106] LYS   970  : -BB- LYS
+    [ 107] ASN   971  : -BB- ASN
+    [ 108] LYS   972  : -BB- LYS
+    [ 109] ASN   973  : -BB- ASN
+    [ 110] LYS   974  : -BB- LYS
+    [ 111] ILE   975  : -BB- ILE
+    [ 112] ASN   976  : -BB- ASN
+    [ 113] LEU   977  : -BB- LEU
+    [ 114] LYS   978  : -BB- LYS
+    [ 115] GLN   979  : -BB- GLN
+    [ 116] GLN   980  : -BB- GLN
+    [ 117] LEU   981  : -BB- LEU
+    [ 118] LYS   982  : -BB- LYS
+    [ 119] TYR   983  : -BB- TYR
+    [ 120] ALA   984  : -BB- ALA
+    [ 121] VAL   985  : -BB- VAL
+    [ 122] GLN   986  : -BB- GLN
+    [ 123] ILE   987  : -BB- ILE
+    [ 124] CYS   988  : -BB- CYS
+    [ 125] LYS   989  : -BB- LYS
+    [ 126] GLY   990  : -BB-
+    [ 127] MET   991  : -BB- MET
+    [ 128] ASP   992  : -BB- ASP
+    [ 129] TYR   993  : -BB- TYR
+    [ 130] LEU   994  : -BB- LEU
+    [ 131] GLY   995  : -BB-
+    [ 132] SER   996  : -BB- SER
+    [ 133] ARG   997  : -BB- ARG
+    [ 134] GLN   998  : -BB- GLN
+    [ 135] TYR   999  : -BB- TYR
+    [ 136] VAL  1000  : -BB- VAL
+    [ 137] HIS  1001  : -BB- HIS
+    [ 138] ARG  1002  : -BB- ARG
+    [ 139] ASP  1003  : -BB- ASP
+    [ 140] LEU  1004  : -BB- LEU
+    [ 141] ALA  1005  : -BB- ALA
+    [ 142] ALA  1006  : -BB- ALA
+    [ 143] ARG  1007  : -BB- ARG
+    [ 144] ASN  1008  : -BB- ASN
+    [ 145] VAL  1009  : -BB- VAL
+    [ 146] LEU  1010  : -BB- LEU
+    [ 147] VAL  1011  : -BB- VAL
+    [ 148] GLU  1012  : -BB- GLU
+    [ 149] SER  1013  : -BB- SER
+    [ 150] GLU  1014  : -BB- GLU
+    [ 151] HIS  1015  : -BB- HIS
+    [ 152] GLN  1016  : -BB- GLN
+    [ 153] VAL  1017  : -BB- VAL
+    [ 154] LYS  1018  : -BB- LYS
+    [ 155] ILE  1019  : -BB- ILE
+    [ 156] GLY  1020  : -BB-
+    [ 157] ASP  1021  : -BB- ASP
+    [ 158] PHE  1022  : -BB- PHE
+    [ 159] GLY  1023  : -BB-
+    [ 160] LEU  1024  : -BB- LEU
+    [ 161] THR  1025  : -BB- THR
+    [ 162] LYS  1026  : -BB- LYS
+    [ 163] ALA  1027  : -BB- ALA
+    [ 164] ILE  1028  : -BB- ILE
+    [ 165] GLU  1029  : -BB- ALA
+    [ 166] THR  1030  : -BB- THR
+    [ 167] ASP  1031  : -BB- ASP
+    [ 168] LYS  1032  : -BB- LYS
+    [ 169] GLU  1033  : -BB- GLU
+    [ 170] PTR  1034  : -BB-
+    [ 171] PTR  1035  : -BB-
+    [ 172] THR  1036  : -BB- THR
+    [ 173] VAL  1037  : -BB- VAL
+    [ 174] LYS  1038  : -BB- LYS
+    [ 175] ASP  1039  : -BB- ASP
+    [ 176] ASP  1040  : -BB- ASP
+    [ 177] ARG  1041  : -BB- ARG
+    [ 178] ASP  1042  : -BB- ASP
+    [ 179] SER  1043  : -BB- SER
+    [ 180] PRO  1044  : -BB- PRO
+    [ 181] VAL  1045  : -BB- VAL
+    [ 182] PHE  1046  : -BB- PHE
+    [ 183] TRP  1047  : -BB- TRP
+    [ 184] TYR  1048  : -BB- TYR
+    [ 185] ALA  1049  : -BB- ALA
+    [ 186] PRO  1050  : -BB- PRO
+    [ 187] GLU  1051  : -BB- GLU
+    [ 188] CYS  1052  : -BB- CYS
+    [ 189] LEU  1053  : -BB- LEU
+    [ 190] MET  1054  : -BB- MET
+    [ 191] GLN  1055  : -BB- GLN
+    [ 192] SER  1056  : -BB- SER
+    [ 193] LYS  1057  : -BB- LYS
+    [ 194] PHE  1058  : -BB- PHE
+    [ 195] TYR  1059  : -BB- TYR
+    [ 196] ILE  1060  : -BB- ILE
+    [ 197] ALA  1061  : -BB- ALA
+    [ 198] SER  1062  : -BB- SER
+    [ 199] ASP  1063  : -BB- ASP
+    [ 200] VAL  1064  : -BB- VAL
+    [ 201] TRP  1065  : -BB- TRP
+    [ 202] SER  1066  : -BB- SER
+    [ 203] PHE  1067  : -BB- PHE
+    [ 204] GLY  1068  : -BB-
+    [ 205] VAL  1069  : -BB- VAL
+    [ 206] THR  1070  : -BB- THR
+    [ 207] LEU  1071  : -BB- LEU
+    [ 208] HIS  1072  : -BB- HIS
+    [ 209] GLU  1073  : -BB- GLU
+    [ 210] LEU  1074  : -BB- LEU
+    [ 211] LEU  1075  : -BB- LEU
+    [ 212] THR  1076  : -BB- THR
+    [ 213] TYR  1077  : -BB- TYR
+    [ 214] CYS  1078  : -BB- CYS
+    [ 215] ASP  1079  : -BB- ASP
+    [ 216] SER  1080  : -BB- SER
+    [ 217] ASP  1081  : -BB- ASP
+    [ 218] SER  1082  : -BB- SER
+    [ 219] SER  1083  : -BB- SER
+    [ 220] PRO  1084  : -BB- PRO
+    [ 221] MET  1085  : -BB- MET
+    [ 222] ALA  1086  : -BB- ALA
+    [ 223] LEU  1087  : -BB- LEU
+    [ 224] PHE  1088  : -BB- PHE
+    [ 225] LEU  1089  : -BB- LEU
+    [ 226] LYS  1090  : -BB- LYS
+    [ 227] MET  1091  : -BB- MET
+    [ 228] ILE  1092  : -BB- ILE
+    [ 229] GLY  1093  : -BB-
+    [ 230] PRO  1094  : -BB- PRO
+    [ 231] THR  1095  : -BB- THR
+    [ 232] HIS  1096  : -BB- HIS
+    [ 233] GLY  1097  : -BB-
+    [ 234] GLN  1098  : -BB- GLN
+    [ 235] MET  1099  : -BB- MET
+    [ 236] THR  1100  : -BB- THR
+    [ 237] VAL  1101  : -BB- VAL
+    [ 238] THR  1102  : -BB- THR
+    [ 239] ARG  1103  : -BB- ARG
+    [ 240] LEU  1104  : -BB- LEU
+    [ 241] VAL  1105  : -BB- VAL
+    [ 242] ASN  1106  : -BB- ASN
+    [ 243] THR  1107  : -BB- THR
+    [ 244] LEU  1108  : -BB- LEU
+    [ 245] LYS  1109  : -BB- LYS
+    [ 246] GLU  1110  : -BB- GLU
+    [ 247] GLY  1111  : -BB-
+    [ 248] LYS  1112  : -BB- LYS
+    [ 249] ARG  1113  : -BB- ARG
+    [ 250] LEU  1114  : -BB- LEU
+    [ 251] PRO  1115  : -BB- PRO
+    [ 252] CYS  1116  : -BB- CYS
+    [ 253] PRO  1117  : PRO
+    [ 254] PRO  1118  : -BB- PRO
+    [ 255] ASN  1119  : -BB- ASN
+    [ 256] CYS  1120  : -BB- CYS
+    [ 257] PRO  1121  : -BB- PRO
+    [ 258] ASP  1122  : -BB- ASP
+    [ 259] GLU  1123  : -BB- GLU
+    [ 260] VAL  1124  : -BB- VAL
+    [ 261] TYR  1125  : -BB- TYR
+    [ 262] GLN  1126  : -BB- GLN
+    [ 263] LEU  1127  : -BB- LEU
+    [ 264] MET  1128  : -BB- MET
+    [ 265] ARG  1129  : -BB- ARG
+    [ 266] LYS  1130  : -BB- LYS
+    [ 267] CYS  1131  : -BB- CYS
+    [ 268] TRP  1132  : -BB- TRP
+    [ 269] GLU  1133  : -BB- GLU
+    [ 270] PHE  1134  : -BB- PHE
+    [ 271] GLN  1135  : -BB- GLN
+    [ 272] PRO  1136  : -BB- PRO
+    [ 273] SER  1137  : -BB- SER
+    [ 274] ASN  1138  : -BB- ASN
+    [ 275] ARG  1139  : -BB- ARG
+    [ 276] THR  1140  : -BB- THR
+    [ 277] SER  1141  : -BB- SER
+    [ 278] PHE  1142  : -BB- PHE
+    [ 279] GLN  1143  : -BB- GLN
+    [ 280] ASN  1144  : -BB- ASN
+    [ 281] LEU  1145  : -BB- LEU
+    [ 282] ILE  1146  : -BB- ILE
+    [ 283] GLU  1147  : -BB- GLU
+    [ 284] GLY  1148  : -BB-
+    [ 285] PHE  1149  : -BB- PHE
+    [ 286] GLU  1150  : -BB- GLU
+    [ 287] ALA  1151  : -BB- ALA
+    [ 288] LEU  1152  : -BB- LEU
+    [ 289] LEU  1153  : -BB- LEU
+    [ 290] LYS  1154  : -BB- LYS
+chain    2 : (3EYG) 3EYG.A TRANSFERASE
+Protonate 3D: Conformer Generation
+    states  :    2    3    5    6    7    8   11
+            :   32   36   13    1   35   38   11
+    average : 5.5 (deviation 2.77)
+Protonate 3D: Energy Matrix VDW
+Protonate 3D: Born Self Energy
+Protonate 3D: Isolated Group Energy
+Protonate 3D: Energy Matrix ELE
+Protonate 3D: Matrix:
+    size    : 913 x 913, 22.37% fill-in
+    values  : min: -9.93452, max: 14.6703
+    Eself   : min: 0, max: 30.2793
+Protonate 3D: System Optimization
+UQO_DeadEnd: dead-end elimination (cutoff=0) ...
+[         0] complexity: 10**(   112.0253)
+[         1] complexity: 10**(    15.3196)
+[         2] complexity: 10**(     3.7604)
+UQO_DeadEnd: 0.39 sec
+UQO_MeanField: calculating mean field (beta=0.0897351) ...
+[         1] error: 9.09091e-001 (   0.001 seconds)
+[         2] error: 5.17257e-002 (   0.001 seconds)
+[         3] error: 1.95082e-002 (   0.002 seconds)
+[         4] error: 4.47800e-003 (   0.002 seconds)
+[         5] error: 1.62993e-003 (   0.003 seconds)
+[         6] error: 3.69637e-004 (   0.003 seconds)
+[         7] error: 1.34127e-004 (   0.004 seconds)
+[         8] error: 3.03865e-005 (   0.005 seconds)
+[         9] error: 1.10233e-005 (   0.005 seconds)
+[        10] error: 2.49712e-006 (   0.006 seconds)
+UQO: searching tree...
+[       170] best= 3.11660554e+002 E= 3.11660554e+002
+[       190] best= 3.11593792e+002 E= 3.11593792e+002
+[       426] best= 3.11593792e+002
+UQO: done (0.76 seconds)
+Protonate 3D: Incidental Waters
+Protonate 3D: Timing:
+    System Partition      :     0.27 sec
+    Conformer Generation  :     0.47 sec
+    Energy Matrix VDW     :     0.16 sec
+    Born Self Energy      :     4.14 sec
+    Isolated Group Energy :     0.17 sec
+    Energy Matrix ELE     :     3.30 sec
+    System Optimization   :     0.76 sec
+    Incidental Waters     :     7.00 sec
+Protonate 3D: Flipped Residues
+       1 : HIS  885 
+       1 : ASN  900 
+       1 : GLN  904 
+       1 : ASN  936 
+       1 : ASN  971 
+       1 : ASN  973 
+       1 : HIS 1001 
+       1 : GLN 1016 
+       1 : GLN 1055 
+       1 : GLN 1098 
+       1 : GLN 1135 
+       1 : ASN 1144 
+Protonate 3D (2018.01) done Thu Oct 11 18:33:53 2018 (16.71 seconds total)
+Protonate 3D [
+    [] // ... 4753 atoms ...
+,   [] // ... 4753 titrate atoms ...
+,   [] // ... 3051 flip atoms ...
+,   [] // ... 0 protected atoms ...
+,   [] // ... 0 precise atoms ...
+,   [
+    ,   vdw        : '800R3'
+    ,   vdw_cutoff : 10.00
+    ,   ele        : 'GB'
+    ,   ele_cutoff : 15.00
+    ,   d_in       : 2.00
+    ,   d_out      : 80.00
+    ,   T          : 300.00
+    ,   ionC       : 0.10
+    ,   pH         : 7.00
+    ,   rulefile   : '$MOE/lib/protonate3d.dat'
+    ,   verbose    : 1
+    ]
+];
+Protonate 3D (2018.01) started Thu Oct 11 18:34:31 2018
+Protonate 3D: System Partition
+chain    1 : (3EYG) 3EYG.A TRANSFERASE
+    [   1] VAL   865  : -BB- VAL N-term
+    [   2] ASP   866  : -BB- ASP
+    [   3] PRO   867  : -BB- PRO
+    [   4] THR   868  : -BB- THR
+    [   5] HIS   869  : -BB- HIS
+    [   6] PHE   870  : -BB- PHE
+    [   7] GLU   871  : -BB- GLU
+    [   8] LYS   872  : -BB- LYS
+    [   9] ARG   873  : -BB- ARG
+    [  10] PHE   874  : -BB- PHE
+    [  11] LEU   875  : -BB- LEU
+    [  12] LYS   876  : -BB- LYS
+    [  13] ARG   877  : -BB- ARG
+    [  14] ILE   878  : -BB- ILE
+    [  15] ARG   879  : -BB- ARG
+    [  16] ASP   880  : -BB- ASP
+    [  17] LEU   881  : -BB- LEU
+    [  18] GLY   882  : -BB-
+    [  19] GLU   883  : -BB- GLU
+    [  20] GLY   884  : -BB-
+    [  21] HIS   885  : -BB- HIS
+    [  22] PHE   886  : -BB- PHE
+    [  23] GLY   887  : -BB-
+    [  24] LYS   888  : -BB- LYS
+    [  25] VAL   889  : -BB- VAL
+    [  26] GLU   890  : -BB- GLU
+    [  27] LEU   891  : -BB- LEU
+    [  28] CYS   892  : -BB- CYS
+    [  29] ARG   893  : -BB- ARG
+    [  30] TYR   894  : -BB- TYR
+    [  31] ASP   895  : -BB- ASP
+    [  32] PRO   896  : -BB- PRO
+    [  33] GLU   897  : -BB- GLU
+    [  34] GLY   898  : -BB-
+    [  35] ASP   899  : -BB- ASP
+    [  36] ASN   900  : -BB- ASN
+    [  37] THR   901  : -BB- THR
+    [  38] GLY   902  : -BB-
+    [  39] GLU   903  : -BB- GLU
+    [  40] GLN   904  : -BB- GLN
+    [  41] VAL   905  : -BB- VAL
+    [  42] ALA   906  : -BB- ALA
+    [  43] VAL   907  : -BB- VAL
+    [  44] LYS   908  : -BB- LYS
+    [  45] SER   909  : -BB- SER
+    [  46] LEU   910  : -BB- LEU
+    [  47] LYS   911  : -BB- LYS
+    [  48] PRO   912  : -BB- ALA
+    [  54] HIS   918  : -BB- HIS N-term
+    [  55] ILE   919  : -BB- ILE
+    [  56] ALA   920  : -BB- ALA
+    [  57] ASP   921  : -BB- ASP
+    [  58] LEU   922  : -BB- LEU
+    [  59] LYS   923  : -BB- LYS
+    [  60] LYS   924  : -BB- LYS
+    [  61] GLU   925  : -BB- GLU
+    [  62] ILE   926  : -BB- ILE
+    [  63] GLU   927  : -BB- GLU
+    [  64] ILE   928  : -BB- ILE
+    [  65] LEU   929  : -BB- LEU
+    [  66] ARG   930  : -BB- ARG
+    [  67] ASN   931  : -BB- ASN
+    [  68] LEU   932  : -BB- LEU
+    [  69] TYR   933  : -BB- TYR
+    [  70] HIS   934  : -BB- HIS
+    [  71] GLU   935  : -BB- GLU
+    [  72] ASN   936  : -BB- ASN
+    [  73] ILE   937  : -BB- ILE
+    [  74] VAL   938  : -BB- VAL
+    [  75] LYS   939  : -BB- LYS
+    [  76] TYR   940  : -BB- TYR
+    [  77] LYS   941  : -BB- LYS
+    [  78] GLY   942  : -BB-
+    [  79] ILE   943  : -BB- ILE
+    [  80] CYS   944  : -BB- CYS
+    [  81] THR   945  : -BB- THR
+    [  82] GLU   946  : -BB- ALA
+    [  86] ASN   950  : -BB- ALA N-term
+    [  87] GLY   951  : -BB-
+    [  88] ILE   952  : -BB- ILE
+    [  89] LYS   953  : -BB- LYS
+    [  90] LEU   954  : -BB- LEU
+    [  91] ILE   955  : -BB- ILE
+    [  92] MET   956  : -BB- MET
+    [  93] GLU   957  : -BB- GLU
+    [  94] PHE   958  : -BB- PHE
+    [  95] LEU   959  : -BB- LEU
+    [  96] PRO   960  : -BB- PRO
+    [  97] SER   961  : -BB- SER
+    [  98] GLY   962  : -BB-
+    [  99] SER   963  : -BB- SER
+    [ 100] LEU   964  : -BB- LEU
+    [ 101] LYS   965  : -BB- LYS
+    [ 102] GLU   966  : -BB- GLU
+    [ 103] TYR   967  : -BB- TYR
+    [ 104] LEU   968  : -BB- LEU
+    [ 105] PRO   969  : -BB- PRO
+    [ 106] LYS   970  : -BB- LYS
+    [ 107] ASN   971  : -BB- ASN
+    [ 108] LYS   972  : -BB- LYS
+    [ 109] ASN   973  : -BB- ASN
+    [ 110] LYS   974  : -BB- LYS
+    [ 111] ILE   975  : -BB- ILE
+    [ 112] ASN   976  : -BB- ASN
+    [ 113] LEU   977  : -BB- LEU
+    [ 114] LYS   978  : -BB- LYS
+    [ 115] GLN   979  : -BB- GLN
+    [ 116] GLN   980  : -BB- GLN
+    [ 117] LEU   981  : -BB- LEU
+    [ 118] LYS   982  : -BB- LYS
+    [ 119] TYR   983  : -BB- TYR
+    [ 120] ALA   984  : -BB- ALA
+    [ 121] VAL   985  : -BB- VAL
+    [ 122] GLN   986  : -BB- GLN
+    [ 123] ILE   987  : -BB- ILE
+    [ 124] CYS   988  : -BB- CYS
+    [ 125] LYS   989  : -BB- LYS
+    [ 126] GLY   990  : -BB-
+    [ 127] MET   991  : -BB- MET
+    [ 128] ASP   992  : -BB- ASP
+    [ 129] TYR   993  : -BB- TYR
+    [ 130] LEU   994  : -BB- LEU
+    [ 131] GLY   995  : -BB-
+    [ 132] SER   996  : -BB- SER
+    [ 133] ARG   997  : -BB- ARG
+    [ 134] GLN   998  : -BB- GLN
+    [ 135] TYR   999  : -BB- TYR
+    [ 136] VAL  1000  : -BB- VAL
+    [ 137] HIS  1001  : -BB- HIS
+    [ 138] ARG  1002  : -BB- ARG
+    [ 139] ASP  1003  : -BB- ASP
+    [ 140] LEU  1004  : -BB- LEU
+    [ 141] ALA  1005  : -BB- ALA
+    [ 142] ALA  1006  : -BB- ALA
+    [ 143] ARG  1007  : -BB- ARG
+    [ 144] ASN  1008  : -BB- ASN
+    [ 145] VAL  1009  : -BB- VAL
+    [ 146] LEU  1010  : -BB- LEU
+    [ 147] VAL  1011  : -BB- VAL
+    [ 148] GLU  1012  : -BB- GLU
+    [ 149] SER  1013  : -BB- SER
+    [ 150] GLU  1014  : -BB- GLU
+    [ 151] HIS  1015  : -BB- HIS
+    [ 152] GLN  1016  : -BB- GLN
+    [ 153] VAL  1017  : -BB- VAL
+    [ 154] LYS  1018  : -BB- LYS
+    [ 155] ILE  1019  : -BB- ILE
+    [ 156] GLY  1020  : -BB-
+    [ 157] ASP  1021  : -BB- ASP
+    [ 158] PHE  1022  : -BB- PHE
+    [ 159] GLY  1023  : -BB-
+    [ 160] LEU  1024  : -BB- LEU
+    [ 161] THR  1025  : -BB- THR
+    [ 162] LYS  1026  : -BB- LYS
+    [ 163] ALA  1027  : -BB- ALA
+    [ 164] ILE  1028  : -BB- ILE
+    [ 165] GLU  1029  : -BB- ALA
+    [ 166] THR  1030  : -BB- THR
+    [ 167] ASP  1031  : -BB- ASP
+    [ 168] LYS  1032  : -BB- LYS
+    [ 169] GLU  1033  : -BB- GLU
+    [ 170] PTR  1034  : -BB-
+    [ 171] PTR  1035  : -BB-
+    [ 172] THR  1036  : -BB- THR
+    [ 173] VAL  1037  : -BB- VAL
+    [ 174] LYS  1038  : -BB- LYS
+    [ 175] ASP  1039  : -BB- ASP
+    [ 176] ASP  1040  : -BB- ASP
+    [ 177] ARG  1041  : -BB- ARG
+    [ 178] ASP  1042  : -BB- ASP
+    [ 179] SER  1043  : -BB- SER
+    [ 180] PRO  1044  : -BB- PRO
+    [ 181] VAL  1045  : -BB- VAL
+    [ 182] PHE  1046  : -BB- PHE
+    [ 183] TRP  1047  : -BB- TRP
+    [ 184] TYR  1048  : -BB- TYR
+    [ 185] ALA  1049  : -BB- ALA
+    [ 186] PRO  1050  : -BB- PRO
+    [ 187] GLU  1051  : -BB- GLU
+    [ 188] CYS  1052  : -BB- CYS
+    [ 189] LEU  1053  : -BB- LEU
+    [ 190] MET  1054  : -BB- MET
+    [ 191] GLN  1055  : -BB- GLN
+    [ 192] SER  1056  : -BB- SER
+    [ 193] LYS  1057  : -BB- LYS
+    [ 194] PHE  1058  : -BB- PHE
+    [ 195] TYR  1059  : -BB- TYR
+    [ 196] ILE  1060  : -BB- ILE
+    [ 197] ALA  1061  : -BB- ALA
+    [ 198] SER  1062  : -BB- SER
+    [ 199] ASP  1063  : -BB- ASP
+    [ 200] VAL  1064  : -BB- VAL
+    [ 201] TRP  1065  : -BB- TRP
+    [ 202] SER  1066  : -BB- SER
+    [ 203] PHE  1067  : -BB- PHE
+    [ 204] GLY  1068  : -BB-
+    [ 205] VAL  1069  : -BB- VAL
+    [ 206] THR  1070  : -BB- THR
+    [ 207] LEU  1071  : -BB- LEU
+    [ 208] HIS  1072  : -BB- HIS
+    [ 209] GLU  1073  : -BB- GLU
+    [ 210] LEU  1074  : -BB- LEU
+    [ 211] LEU  1075  : -BB- LEU
+    [ 212] THR  1076  : -BB- THR
+    [ 213] TYR  1077  : -BB- TYR
+    [ 214] CYS  1078  : -BB- CYS
+    [ 215] ASP  1079  : -BB- ASP
+    [ 216] SER  1080  : -BB- SER
+    [ 217] ASP  1081  : -BB- ASP
+    [ 218] SER  1082  : -BB- SER
+    [ 219] SER  1083  : -BB- SER
+    [ 220] PRO  1084  : -BB- PRO
+    [ 221] MET  1085  : -BB- MET
+    [ 222] ALA  1086  : -BB- ALA
+    [ 223] LEU  1087  : -BB- LEU
+    [ 224] PHE  1088  : -BB- PHE
+    [ 225] LEU  1089  : -BB- LEU
+    [ 226] LYS  1090  : -BB- LYS
+    [ 227] MET  1091  : -BB- MET
+    [ 228] ILE  1092  : -BB- ILE
+    [ 229] GLY  1093  : -BB-
+    [ 230] PRO  1094  : -BB- PRO
+    [ 231] THR  1095  : -BB- THR
+    [ 232] HIS  1096  : -BB- HIS
+    [ 233] GLY  1097  : -BB-
+    [ 234] GLN  1098  : -BB- GLN
+    [ 235] MET  1099  : -BB- MET
+    [ 236] THR  1100  : -BB- THR
+    [ 237] VAL  1101  : -BB- VAL
+    [ 238] THR  1102  : -BB- THR
+    [ 239] ARG  1103  : -BB- ARG
+    [ 240] LEU  1104  : -BB- LEU
+    [ 241] VAL  1105  : -BB- VAL
+    [ 242] ASN  1106  : -BB- ASN
+    [ 243] THR  1107  : -BB- THR
+    [ 244] LEU  1108  : -BB- LEU
+    [ 245] LYS  1109  : -BB- LYS
+    [ 246] GLU  1110  : -BB- GLU
+    [ 247] GLY  1111  : -BB-
+    [ 248] LYS  1112  : -BB- LYS
+    [ 249] ARG  1113  : -BB- ARG
+    [ 250] LEU  1114  : -BB- LEU
+    [ 251] PRO  1115  : -BB- PRO
+    [ 252] CYS  1116  : -BB- CYS
+    [ 253] PRO  1117  : PRO
+    [ 254] PRO  1118  : -BB- PRO
+    [ 255] ASN  1119  : -BB- ASN
+    [ 256] CYS  1120  : -BB- CYS
+    [ 257] PRO  1121  : -BB- PRO
+    [ 258] ASP  1122  : -BB- ASP
+    [ 259] GLU  1123  : -BB- GLU
+    [ 260] VAL  1124  : -BB- VAL
+    [ 261] TYR  1125  : -BB- TYR
+    [ 262] GLN  1126  : -BB- GLN
+    [ 263] LEU  1127  : -BB- LEU
+    [ 264] MET  1128  : -BB- MET
+    [ 265] ARG  1129  : -BB- ARG
+    [ 266] LYS  1130  : -BB- LYS
+    [ 267] CYS  1131  : -BB- CYS
+    [ 268] TRP  1132  : -BB- TRP
+    [ 269] GLU  1133  : -BB- GLU
+    [ 270] PHE  1134  : -BB- PHE
+    [ 271] GLN  1135  : -BB- GLN
+    [ 272] PRO  1136  : -BB- PRO
+    [ 273] SER  1137  : -BB- SER
+    [ 274] ASN  1138  : -BB- ASN
+    [ 275] ARG  1139  : -BB- ARG
+    [ 276] THR  1140  : -BB- THR
+    [ 277] SER  1141  : -BB- SER
+    [ 278] PHE  1142  : -BB- PHE
+    [ 279] GLN  1143  : -BB- GLN
+    [ 280] ASN  1144  : -BB- ASN
+    [ 281] LEU  1145  : -BB- LEU
+    [ 282] ILE  1146  : -BB- ILE
+    [ 283] GLU  1147  : -BB- GLU
+    [ 284] GLY  1148  : -BB-
+    [ 285] PHE  1149  : -BB- PHE
+    [ 286] GLU  1150  : -BB- GLU
+    [ 287] ALA  1151  : -BB- ALA
+    [ 288] LEU  1152  : -BB- LEU
+    [ 289] LEU  1153  : -BB- LEU
+    [ 290] LYS  1154  : -BB- LYS
+chain    2 : (3EYG) 3EYG.A TRANSFERASE
+Protonate 3D: Conformer Generation
+    states  :    2    3    5    7    8   11
+            :   32   37   13   35   38   11
+    average : 5.5 (deviation 2.78)
+Protonate 3D: Energy Matrix VDW
+Protonate 3D: Born Self Energy
+Protonate 3D: Isolated Group Energy
+Protonate 3D: Energy Matrix ELE
+Protonate 3D: Matrix:
+    size    : 910 x 910, 22.23% fill-in
+    values  : min: -9.93452, max: 14.6703
+    Eself   : min: 0, max: 30.2792
+Protonate 3D: System Optimization
+UQO_DeadEnd: dead-end elimination (cutoff=0) ...
+[         0] complexity: 10**(   111.7242)
+[         1] complexity: 10**(    15.4957)
+[         2] complexity: 10**(     3.7604)
+UQO_DeadEnd: 0.41 sec
+UQO_MeanField: calculating mean field (beta=0.0897344) ...
+[         1] error: 9.09091e-001 (   0.001 seconds)
+[         2] error: 5.17397e-002 (   0.001 seconds)
+[         3] error: 1.95052e-002 (   0.002 seconds)
+[         4] error: 4.48119e-003 (   0.002 seconds)
+[         5] error: 1.63040e-003 (   0.003 seconds)
+[         6] error: 3.70064e-004 (   0.003 seconds)
+[         7] error: 1.34225e-004 (   0.004 seconds)
+[         8] error: 3.04351e-005 (   0.005 seconds)
+[         9] error: 1.10362e-005 (   0.005 seconds)
+[        10] error: 2.50221e-006 (   0.006 seconds)
+UQO: searching tree...
+[       170] best= 3.09212829e+002 E= 3.09212829e+002
+[       190] best= 3.09146067e+002 E= 3.09146067e+002
+[       426] best= 3.09146067e+002
+UQO: done (0.82 seconds)
+Protonate 3D: Incidental Waters
+Protonate 3D: Timing:
+    System Partition      :     0.34 sec
+    Conformer Generation  :     0.55 sec
+    Energy Matrix VDW     :     0.15 sec
+    Born Self Energy      :     4.22 sec
+    Isolated Group Energy :     0.17 sec
+    Energy Matrix ELE     :     3.35 sec
+    System Optimization   :     0.82 sec
+    Incidental Waters     :     7.11 sec
+Protonate 3D (2018.01) done Thu Oct 11 18:34:49 2018 (17.19 seconds total)
+Protonate 3D [
+    [] // ... 4848 atoms ...
+,   [] // ... 4848 titrate atoms ...
+,   [] // ... 3129 flip atoms ...
+,   [] // ... 0 protected atoms ...
+,   [] // ... 0 precise atoms ...
+,   [
+    ,   vdw        : '800R3'
+    ,   vdw_cutoff : 10.00
+    ,   ele        : 'GB'
+    ,   ele_cutoff : 15.00
+    ,   d_in       : 2.00
+    ,   d_out      : 80.00
+    ,   T          : 300.00
+    ,   ionC       : 0.10
+    ,   pH         : 7.00
+    ,   rulefile   : '$MOE/lib/protonate3d.dat'
+    ,   verbose    : 1
+    ]
+];
+Protonate 3D (2018.01) started Thu Oct 11 18:36:59 2018
+Protonate 3D: System Partition
+chain    1 : (3EYG) 3EYG.A TRANSFERASE
+    [   1] VAL   865  : -BB- VAL N-term
+    [   2] ASP   866  : -BB- ASP
+    [   3] PRO   867  : -BB- PRO
+    [   4] THR   868  : -BB- THR
+    [   5] HIS   869  : -BB- HIS
+    [   6] PHE   870  : -BB- PHE
+    [   7] GLU   871  : -BB- GLU
+    [   8] LYS   872  : -BB- LYS
+    [   9] ARG   873  : -BB- ARG
+    [  10] PHE   874  : -BB- PHE
+    [  11] LEU   875  : -BB- LEU
+    [  12] LYS   876  : -BB- LYS
+    [  13] ARG   877  : -BB- ARG
+    [  14] ILE   878  : -BB- ILE
+    [  15] ARG   879  : -BB- ARG
+    [  16] ASP   880  : -BB- ASP
+    [  17] LEU   881  : -BB- LEU
+    [  18] GLY   882  : -BB-
+    [  19] GLU   883  : -BB- GLU
+    [  20] GLY   884  : -BB-
+    [  21] HIS   885  : -BB- HIS
+    [  22] PHE   886  : -BB- PHE
+    [  23] GLY   887  : -BB-
+    [  24] LYS   888  : -BB- LYS
+    [  25] VAL   889  : -BB- VAL
+    [  26] GLU   890  : -BB- GLU
+    [  27] LEU   891  : -BB- LEU
+    [  28] CYS   892  : -BB- CYS
+    [  29] ARG   893  : -BB- ARG
+    [  30] TYR   894  : -BB- TYR
+    [  31] ASP   895  : -BB- ASP
+    [  32] PRO   896  : -BB- PRO
+    [  33] GLU   897  : -BB- GLU
+    [  34] GLY   898  : -BB-
+    [  35] ASP   899  : -BB- ASP
+    [  36] ASN   900  : -BB- ASN
+    [  37] THR   901  : -BB- THR
+    [  38] GLY   902  : -BB-
+    [  39] GLU   903  : -BB- GLU
+    [  40] GLN   904  : -BB- GLN
+    [  41] VAL   905  : -BB- VAL
+    [  42] ALA   906  : -BB- ALA
+    [  43] VAL   907  : -BB- VAL
+    [  44] LYS   908  : -BB- LYS
+    [  45] SER   909  : -BB- SER
+    [  46] LEU   910  : -BB- LEU
+    [  47] LYS   911  : -BB- LYS
+    [  48] PRO   912  : -BB- PRO
+    [  49] GLU   913  : -BB- GLU
+    [  50] SER   914  : -BB- SER
+    [  51] GLY   915  : -BB-
+    [  52] GLY   916  : -BB-
+    [  53] ASN   917  : -BB- ASN
+    [  54] HIS   918  : -BB- HIS
+    [  55] ILE   919  : -BB- ILE
+    [  56] ALA   920  : -BB- ALA
+    [  57] ASP   921  : -BB- ASP
+    [  58] LEU   922  : -BB- LEU
+    [  59] LYS   923  : -BB- LYS
+    [  60] LYS   924  : -BB- LYS
+    [  61] GLU   925  : -BB- GLU
+    [  62] ILE   926  : -BB- ILE
+    [  63] GLU   927  : -BB- GLU
+    [  64] ILE   928  : -BB- ILE
+    [  65] LEU   929  : -BB- LEU
+    [  66] ARG   930  : -BB- ARG
+    [  67] ASN   931  : -BB- ASN
+    [  68] LEU   932  : -BB- LEU
+    [  69] TYR   933  : -BB- TYR
+    [  70] HIS   934  : -BB- HIS
+    [  71] GLU   935  : -BB- GLU
+    [  72] ASN   936  : -BB- ASN
+    [  73] ILE   937  : -BB- ILE
+    [  74] VAL   938  : -BB- VAL
+    [  75] LYS   939  : -BB- LYS
+    [  76] TYR   940  : -BB- TYR
+    [  77] LYS   941  : -BB- LYS
+    [  78] GLY   942  : -BB-
+    [  79] ILE   943  : -BB- ILE
+    [  80] CYS   944  : -BB- CYS
+    [  81] THR   945  : -BB- THR
+    [  82] GLU   946  : -BB- GLU
+    [  83] ASP   947  : -BB- ASP
+    [  84] GLY   948  : -BB-
+    [  85] GLY   949  : -BB-
+    [  86] ASN   950  : -BB- ASN
+    [  87] GLY   951  : -BB-
+    [  88] ILE   952  : -BB- ILE
+    [  89] LYS   953  : -BB- LYS
+    [  90] LEU   954  : -BB- LEU
+    [  91] ILE   955  : -BB- ILE
+    [  92] MET   956  : -BB- MET
+    [  93] GLU   957  : -BB- GLU
+    [  94] PHE   958  : -BB- PHE
+    [  95] LEU   959  : -BB- LEU
+    [  96] PRO   960  : -BB- PRO
+    [  97] SER   961  : -BB- SER
+    [  98] GLY   962  : -BB-
+    [  99] SER   963  : -BB- SER
+    [ 100] LEU   964  : -BB- LEU
+    [ 101] LYS   965  : -BB- LYS
+    [ 102] GLU   966  : -BB- GLU
+    [ 103] TYR   967  : -BB- TYR
+    [ 104] LEU   968  : -BB- LEU
+    [ 105] PRO   969  : -BB- PRO
+    [ 106] LYS   970  : -BB- LYS
+    [ 107] ASN   971  : -BB- ASN
+    [ 108] LYS   972  : -BB- LYS
+    [ 109] ASN   973  : -BB- ASN
+    [ 110] LYS   974  : -BB- LYS
+    [ 111] ILE   975  : -BB- ILE
+    [ 112] ASN   976  : -BB- ASN
+    [ 113] LEU   977  : -BB- LEU
+    [ 114] LYS   978  : -BB- LYS
+    [ 115] GLN   979  : -BB- GLN
+    [ 116] GLN   980  : -BB- GLN
+    [ 117] LEU   981  : -BB- LEU
+    [ 118] LYS   982  : -BB- LYS
+    [ 119] TYR   983  : -BB- TYR
+    [ 120] ALA   984  : -BB- ALA
+    [ 121] VAL   985  : -BB- VAL
+    [ 122] GLN   986  : -BB- GLN
+    [ 123] ILE   987  : -BB- ILE
+    [ 124] CYS   988  : -BB- CYS
+    [ 125] LYS   989  : -BB- LYS
+    [ 126] GLY   990  : -BB-
+    [ 127] MET   991  : -BB- MET
+    [ 128] ASP   992  : -BB- ASP
+    [ 129] TYR   993  : -BB- TYR
+    [ 130] LEU   994  : -BB- LEU
+    [ 131] GLY   995  : -BB-
+    [ 132] SER   996  : -BB- SER
+    [ 133] ARG   997  : -BB- ARG
+    [ 134] GLN   998  : -BB- GLN
+    [ 135] TYR   999  : -BB- TYR
+    [ 136] VAL  1000  : -BB- VAL
+    [ 137] HIS  1001  : -BB- HIS
+    [ 138] ARG  1002  : -BB- ARG
+    [ 139] ASP  1003  : -BB- ASP
+    [ 140] LEU  1004  : -BB- LEU
+    [ 141] ALA  1005  : -BB- ALA
+    [ 142] ALA  1006  : -BB- ALA
+    [ 143] ARG  1007  : -BB- ARG
+    [ 144] ASN  1008  : -BB- ASN
+    [ 145] VAL  1009  : -BB- VAL
+    [ 146] LEU  1010  : -BB- LEU
+    [ 147] VAL  1011  : -BB- VAL
+    [ 148] GLU  1012  : -BB- GLU
+    [ 149] SER  1013  : -BB- SER
+    [ 150] GLU  1014  : -BB- GLU
+    [ 151] HIS  1015  : -BB- HIS
+    [ 152] GLN  1016  : -BB- GLN
+    [ 153] VAL  1017  : -BB- VAL
+    [ 154] LYS  1018  : -BB- LYS
+    [ 155] ILE  1019  : -BB- ILE
+    [ 156] GLY  1020  : -BB-
+    [ 157] ASP  1021  : -BB- ASP
+    [ 158] PHE  1022  : -BB- PHE
+    [ 159] GLY  1023  : -BB-
+    [ 160] LEU  1024  : -BB- LEU
+    [ 161] THR  1025  : -BB- THR
+    [ 162] LYS  1026  : -BB- LYS
+    [ 163] ALA  1027  : -BB- ALA
+    [ 164] ILE  1028  : -BB- ILE
+    [ 165] GLU  1029  : -BB- GLU
+    [ 166] THR  1030  : -BB- THR
+    [ 167] ASP  1031  : -BB- ASP
+    [ 168] LYS  1032  : -BB- LYS
+    [ 169] GLU  1033  : -BB- GLU
+    [ 170] PTR  1034  : -BB-
+    [ 171] PTR  1035  : -BB-
+    [ 172] THR  1036  : -BB- THR
+    [ 173] VAL  1037  : -BB- VAL
+    [ 174] LYS  1038  : -BB- LYS
+    [ 175] ASP  1039  : -BB- ASP
+    [ 176] ASP  1040  : -BB- ASP
+    [ 177] ARG  1041  : -BB- ARG
+    [ 178] ASP  1042  : -BB- ASP
+    [ 179] SER  1043  : -BB- SER
+    [ 180] PRO  1044  : -BB- PRO
+    [ 181] VAL  1045  : -BB- VAL
+    [ 182] PHE  1046  : -BB- PHE
+    [ 183] TRP  1047  : -BB- TRP
+    [ 184] TYR  1048  : -BB- TYR
+    [ 185] ALA  1049  : -BB- ALA
+    [ 186] PRO  1050  : -BB- PRO
+    [ 187] GLU  1051  : -BB- GLU
+    [ 188] CYS  1052  : -BB- CYS
+    [ 189] LEU  1053  : -BB- LEU
+    [ 190] MET  1054  : -BB- MET
+    [ 191] GLN  1055  : -BB- GLN
+    [ 192] SER  1056  : -BB- SER
+    [ 193] LYS  1057  : -BB- LYS
+    [ 194] PHE  1058  : -BB- PHE
+    [ 195] TYR  1059  : -BB- TYR
+    [ 196] ILE  1060  : -BB- ILE
+    [ 197] ALA  1061  : -BB- ALA
+    [ 198] SER  1062  : -BB- SER
+    [ 199] ASP  1063  : -BB- ASP
+    [ 200] VAL  1064  : -BB- VAL
+    [ 201] TRP  1065  : -BB- TRP
+    [ 202] SER  1066  : -BB- SER
+    [ 203] PHE  1067  : -BB- PHE
+    [ 204] GLY  1068  : -BB-
+    [ 205] VAL  1069  : -BB- VAL
+    [ 206] THR  1070  : -BB- THR
+    [ 207] LEU  1071  : -BB- LEU
+    [ 208] HIS  1072  : -BB- HIS
+    [ 209] GLU  1073  : -BB- GLU
+    [ 210] LEU  1074  : -BB- LEU
+    [ 211] LEU  1075  : -BB- LEU
+    [ 212] THR  1076  : -BB- THR
+    [ 213] TYR  1077  : -BB- TYR
+    [ 214] CYS  1078  : -BB- CYS
+    [ 215] ASP  1079  : -BB- ASP
+    [ 216] SER  1080  : -BB- SER
+    [ 217] ASP  1081  : -BB- ASP
+    [ 218] SER  1082  : -BB- SER
+    [ 219] SER  1083  : -BB- SER
+    [ 220] PRO  1084  : -BB- PRO
+    [ 221] MET  1085  : -BB- MET
+    [ 222] ALA  1086  : -BB- ALA
+    [ 223] LEU  1087  : -BB- LEU
+    [ 224] PHE  1088  : -BB- PHE
+    [ 225] LEU  1089  : -BB- LEU
+    [ 226] LYS  1090  : -BB- LYS
+    [ 227] MET  1091  : -BB- MET
+    [ 228] ILE  1092  : -BB- ILE
+    [ 229] GLY  1093  : -BB-
+    [ 230] PRO  1094  : -BB- PRO
+    [ 231] THR  1095  : -BB- THR
+    [ 232] HIS  1096  : -BB- HIS
+    [ 233] GLY  1097  : -BB-
+    [ 234] GLN  1098  : -BB- GLN
+    [ 235] MET  1099  : -BB- MET
+    [ 236] THR  1100  : -BB- THR
+    [ 237] VAL  1101  : -BB- VAL
+    [ 238] THR  1102  : -BB- THR
+    [ 239] ARG  1103  : -BB- ARG
+    [ 240] LEU  1104  : -BB- LEU
+    [ 241] VAL  1105  : -BB- VAL
+    [ 242] ASN  1106  : -BB- ASN
+    [ 243] THR  1107  : -BB- THR
+    [ 244] LEU  1108  : -BB- LEU
+    [ 245] LYS  1109  : -BB- LYS
+    [ 246] GLU  1110  : -BB- GLU
+    [ 247] GLY  1111  : -BB-
+    [ 248] LYS  1112  : -BB- LYS
+    [ 249] ARG  1113  : -BB- ARG
+    [ 250] LEU  1114  : -BB- LEU
+    [ 251] PRO  1115  : -BB- PRO
+    [ 252] CYS  1116  : -BB- CYS
+    [ 253] PRO  1117  : PRO
+    [ 254] PRO  1118  : -BB- PRO
+    [ 255] ASN  1119  : -BB- ASN
+    [ 256] CYS  1120  : -BB- CYS
+    [ 257] PRO  1121  : -BB- PRO
+    [ 258] ASP  1122  : -BB- ASP
+    [ 259] GLU  1123  : -BB- GLU
+    [ 260] VAL  1124  : -BB- VAL
+    [ 261] TYR  1125  : -BB- TYR
+    [ 262] GLN  1126  : -BB- GLN
+    [ 263] LEU  1127  : -BB- LEU
+    [ 264] MET  1128  : -BB- MET
+    [ 265] ARG  1129  : -BB- ARG
+    [ 266] LYS  1130  : -BB- LYS
+    [ 267] CYS  1131  : -BB- CYS
+    [ 268] TRP  1132  : -BB- TRP
+    [ 269] GLU  1133  : -BB- GLU
+    [ 270] PHE  1134  : -BB- PHE
+    [ 271] GLN  1135  : -BB- GLN
+    [ 272] PRO  1136  : -BB- PRO
+    [ 273] SER  1137  : -BB- SER
+    [ 274] ASN  1138  : -BB- ASN
+    [ 275] ARG  1139  : -BB- ARG
+    [ 276] THR  1140  : -BB- THR
+    [ 277] SER  1141  : -BB- SER
+    [ 278] PHE  1142  : -BB- PHE
+    [ 279] GLN  1143  : -BB- GLN
+    [ 280] ASN  1144  : -BB- ASN
+    [ 281] LEU  1145  : -BB- LEU
+    [ 282] ILE  1146  : -BB- ILE
+    [ 283] GLU  1147  : -BB- GLU
+    [ 284] GLY  1148  : -BB-
+    [ 285] PHE  1149  : -BB- PHE
+    [ 286] GLU  1150  : -BB- GLU
+    [ 287] ALA  1151  : -BB- ALA
+    [ 288] LEU  1152  : -BB- LEU
+    [ 289] LEU  1153  : -BB- LEU
+    [ 290] LYS  1154  : -BB- LYS C-term
+chain    2 : (3EYG) 3EYG.A TRANSFERASE
+Protonate 3D: Conformer Generation
+    states  :    2    3    5    7    8   11
+            :   34   42   13   36   36   11
+    average : 5.3 (deviation 2.78)
+Protonate 3D: Energy Matrix VDW
+Protonate 3D: Born Self Energy
+Protonate 3D: Isolated Group Energy
+Protonate 3D: Energy Matrix ELE
+Protonate 3D: Matrix:
+    size    : 920 x 920, 21.93% fill-in
+    values  : min: -9.94082, max: 14.6502
+    Eself   : min: 0, max: 30.2831
+Protonate 3D: System Optimization
+UQO_DeadEnd: dead-end elimination (cutoff=0) ...
+[         0] complexity: 10**(   113.7508)
+[         1] complexity: 10**(    15.0186)
+[         2] complexity: 10**(     4.3625)
+UQO_DeadEnd: 0.46 sec
+UQO_MeanField: calculating mean field (beta=0.0709834) ...
+[         1] error: 9.09091e-001 (   0.001 seconds)
+[         2] error: 1.02968e-001 (   0.001 seconds)
+[         3] error: 4.84057e-002 (   0.002 seconds)
+[         4] error: 1.60236e-002 (   0.003 seconds)
+[         5] error: 7.04042e-003 (   0.004 seconds)
+[         6] error: 2.21430e-003 (   0.004 seconds)
+[         7] error: 9.61923e-004 (   0.005 seconds)
+[         8] error: 3.00287e-004 (   0.006 seconds)
+[         9] error: 1.30242e-004 (   0.007 seconds)
+[        10] error: 4.06168e-005 (   0.008 seconds)
+[        11] error: 1.76128e-005 (   0.009 seconds)
+[        12] error: 5.49188e-006 (   0.010 seconds)
+UQO: searching tree...
+[       176] best= 3.00244246e+002 E= 3.00244246e+002
+[       196] best= 3.00179173e+002 E= 3.00179173e+002
+[      1192] best= 3.00179173e+002
+UQO: done (1.38 seconds)
+Protonate 3D: Incidental Waters
+Protonate 3D: Timing:
+    System Partition      :     0.34 sec
+    Conformer Generation  :     0.61 sec
+    Energy Matrix VDW     :     0.16 sec
+    Born Self Energy      :     4.57 sec
+    Isolated Group Energy :     0.20 sec
+    Energy Matrix ELE     :     3.63 sec
+    System Optimization   :     1.38 sec
+    Incidental Waters     :     7.75 sec
+Protonate 3D: Flipped Residues
+       1 : ASN  917 
+Protonate 3D (2018.01) done Thu Oct 11 18:37:18 2018 (19.17 seconds total)
+svl> logfile[]

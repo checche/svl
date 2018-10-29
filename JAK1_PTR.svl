@@ -1,0 +1,233 @@
+#set main 'calc1_JAK1_PTR'
+
+const  JAKs = 'JAK1'; //ex JAK1, JAK2, JAK3, TYK2
+const  activation = 1;//inact:0, act:1
+
+const PRO_BB_MATCH = '[CX3](~[OX1!-])~[CX4]~[N]';
+const COO_MATCH = '[#6X3](~[#8])(~[#8])~[#6]~[#7]';
+const CTERMINUS_MATCH = '[CX3](~[O])(~[O])~[CX4]~[N]';
+const NTERMINUS_MATCH = '[CX3](~[O])~[CX4]~[N+]';
+
+function StructurePreparation, pro_Mutate, Protonate3D, MM, pro_SmartMutate;
+
+
+global function _chrgRes [n_term,c_term];
+
+    if length n_term then
+	local ntat = app first apt sm_MatchAll [PRO_BB_MATCH, rAtoms n_term];
+	ntat = app last ntat;
+	aSetIon [ntat, 1];
+	aSetGeometry [ntat, 'sp3'];
+	Add_H ntat;
+    endif
+
+	// ===== Charge C terminus ===== //
+
+    local hatoms;
+    if length c_term then
+
+	local coo = app first apt sm_MatchAll [COO_MATCH, rAtoms c_term];
+	local hasCOO = app length coo;
+	coo = coo | hasCOO;
+	if length coo then
+	    coo = tr [app second coo, app third coo];
+	    hatoms = aBonds cat coo;
+	    hatoms = cat (hatoms || m_join [aElement hatoms, ['H', 'LP']]);
+	    oDestroy hatoms;
+	    aSetGeometry [app first coo, 'sp2'];
+	    aSetIon [app first coo, 0];
+	    aSetName [app first coo, 'O'];
+
+	    aSetGeometry [app second coo, 'sp3'];
+	    aSetIon [app second coo, -1];
+	    aSetName [app second coo, 'OXT'];
+
+	    Add_H cat coo;
+	endif
+
+	local co = app first apt sm_MatchAll [
+	    PRO_BB_MATCH,
+	    rAtoms c_term | not hasCOO
+	];
+	if orE app length co then
+	    local c = app first co;
+
+		// !!! NOT GUARENTEED TO ONLY 1 H. If C is SP3 then it may fail.
+
+	    Add_H c;
+	    hatoms = cat aBonds cat c;
+	    hatoms = cat (hatoms | m_join [aElement hatoms, ['H', 'LP']]);
+	    aSetElement [hatoms,'O'];
+	    aSetName [hatoms,'OXT'];
+	    aSetDist [[c,hatoms],1.256];
+	    aSetGeometry [hatoms,'sp3'];
+	    aSetIon [hatoms,-1];
+	    aSetHidden [hatoms, aHidden c];
+	endif
+
+	   // Check for extra bonds to COO when charging. Sometimes if O is
+	   // too close to another atom autoConnect creates a bond.
+
+	coo = app first apt sm_MatchAll [COO_MATCH, rAtoms c_term];
+	local o1 = app second coo;
+	local o2 = app third coo;
+	coo = app first coo;
+
+	local i=0;
+	for i=1, length coo loop
+	    local bond = cat aBonds o1(i);
+	    bond = diff [bond, coo(i)];
+	    if length bond then Unbond [o1(i), bond]; endif
+
+	    bond = aBonds o2(i);
+	    bond = diff [bond, coo(i)];
+	    if length bond then Unbond [o2(i), bond]; endif
+	endloop
+    endif
+
+    return hatoms;
+endfunction
+
+
+
+
+global function calc1_JAK1_PTR []
+   local anm, ank, cres, i, amolnum, moln;
+//fix
+    aSetFixed [Atoms[], 1];
+//sp
+    StructurePreparation [cmd:'cli',batch_protonate3d:0];
+//del ace nme
+    anm = (rName Residues[] == 'ACE') or (rName Residues[] == 'NME');
+    ank = Residues[]|anm;//keys of ace,nme
+    oDestroy ank;
+
+///
+    local  cterm_res_all, nterm_res_all, cterm_atom_all, nterm_atom_all;
+    local nterm_res, cterm_res, cterm_bb, nterm_bb ;
+    cterm_res_all = [] ;
+    nterm_res_all = [] ;
+    cterm_atom_all = [] ;
+    nterm_atom_all = [] ;
+
+    cres = apt mget [cResidues Chains[] , rType cResidues Chains[] == 'amino'];
+    for i =1, length cres loop
+	if isnull cres(i) then continue; endif
+	amolnum = app first aMoleculeNumber rAtoms cres(i);
+	for moln in uniq amolnum loop
+	   nterm_res = first (cres(i) | (amolnum == moln));
+	   cterm_res = last (cres(i) | (amolnum == moln));
+	   _chrgRes[nterm_res,cterm_res];
+	   cterm_res_all = cat [cterm_res_all, cterm_res];
+	   nterm_res_all = cat [nterm_res_all, nterm_res];
+	   cterm_bb = (cat rAtoms cterm_res) | (aBackbone cat rAtoms cterm_res);
+	   nterm_bb = (cat rAtoms nterm_res) | (aBackbone cat rAtoms nterm_res);
+   	   cterm_atom_all = cat [cterm_atom_all, cterm_bb|(aElement cterm_bb == 'O')];
+ 	   nterm_atom_all = cat [nterm_atom_all, nterm_bb|(aElement nterm_bb == 'N')];
+	endloop
+    endloop
+
+
+
+    local prom, pro,rsdkeys;
+    prom = app alltrue (rType cResidues Chains[] == 'amino');
+    pro = Chains[]|prom;//protein chain key
+    rsdkeys = cat cResidues pro;//residue keys
+//ionization
+/*
+    nt = rsdkeys(1);//n terminal
+    ntkeys =cat rAtoms rsdkeys(1);//atom keys
+    nm = (aBackbone ntkeys) and (aElement ntkeys=='N');
+    nkey = ntkeys|nm;//n terminal atom key
+
+//////////ionize to NH3+
+
+    neighborN = aBonds nkey;//neighbor keys
+
+    ct = rsdkeys(length rsdkeys);//c terminal
+    ctkeys = cat rAtoms rsdkeys(length rsdkeys);
+    cm = (aBackbone ctkeys) and (aElement ctkeys=='C');
+    ckeys = ctkeys|cm;
+    cindx = x_min app length aBonds ckeys;
+    ckey = ckeys[cindx];//c terminal atom key
+
+/////////ionize to COO-
+
+    neighborC = aBonds ckey
+*/
+
+
+
+//PTRTYR mutation
+    local PTRkeys, protect;
+    if JAKs == 'JAK1' then
+        PTRkeys = rsdkeys|(rUID rsdkeys == 1034 or rUID rsdkeys == 1035);
+    elseif JAKs == 'JAK2' then
+        PTRkeys = rsdkeys|(rUID rsdkeys == 1007 or rUID rsdkeys == 1008);
+    elseif JAKs == 'JAK3' then
+        PTRkeys = rsdkeys|(rUID rsdkeys == 980 or rUID rsdkeys == 981);
+    elseif JAKs == 'TYK2' then
+        PTRkeys = rsdkeys|(rUID rsdkeys == 1054);
+    endif
+
+//TYRtoPTR
+    if activation == 1 then
+//        pro_Mutate [PTRkeys,'PTR'];
+	  pro_SmartMutate [PTRkeys,'PTR']; pr '0';pr [PTRkeys,'PTR'];
+//PTRtoTYR
+    elseif activation == 0 then
+//        pro_Mutate [PTRkeys,'TYR'];
+	  pro_SmartMutate [PTRkeys,'TYR']; pr '1'; pr [PTRkeys,'TYR'];
+    endif
+//////////////////////////
+//p3d
+   protect = [];
+   protect = cat [cterm_atom_all, nterm_atom_all, cat aBonds cterm_atom_all, cat aBonds nterm_atom_all];
+//////////////////////////
+   Protonate3D [
+        Atoms[] // ... atoms ...
+    ,   Atoms[] // ... titrate atoms ...
+    ,   Atoms[] // ... flip atoms ...
+    ,   protect // ...  protected atoms ...
+    ,   [] // ...  precise atoms ...
+    ,   [
+           vdw        : '800R3'
+        ,   vdw_cutoff : 10.00
+        ,   ele        : 'GB'
+        ,   ele_cutoff : 15.00
+        ,   d_in       : 2.00
+        ,   d_out      : 80.00
+        ,   T          : 300.00
+        ,   ionC       : 0.10
+        ,   pH         : 7.00
+        ,   rulefile   : '$MOE/lib/protonate3d.dat'
+        ,   verbose    : 1
+        ]
+    ];
+    //EnergyMinimize
+    MM [
+        pot_finalize   : 0
+    ,   pot_charge     : 0
+    ,   keep_chirality : ''
+    ,   sd_maxit       : 100
+    ,   sd_gtest       : 1000
+    ,   cg_maxit       : 100
+    ,   cg_gtest       : 100
+    ,   optimizeOH     : 0
+    ,   maxit          : 500
+    ,   gtest          : 0.1
+    ,   maxstep        : 1
+    ,   maxstep_x      : 5
+    ,   msg_prefix     : ''
+    ,   aRigidBody     : 0
+    ,   rigidHOH       : 1
+    ,   rigidOH        : 0
+    ,   aInert         : 0
+    ,   aFixed         : 0
+    ,   tetherWeight   : 0
+    ,   careful        : 1000
+    ,   private        : 0
+    ,   verbose        : 1
+    ];
+
+endfunction

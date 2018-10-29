@@ -1,0 +1,53 @@
+svl> sm_Build 'NC=O'
+[563949953421323,563949953421329,563949953421331,563949953421325,563949953421333,563949953421327]
+svl> new_chain = oCreate 0
+svl> new_residue = oCreate new_chain
+svl> oType new_residue
+'residue'
+svl> oDestroy new_chain
+1
+svl> oType new_residue
+''
+svl> sym_find '*Destroy*'
+['GDestroy','MeterDestroy','RestraintDestroy','WindowDestroy','__ViewOverlayDestroy','mols_DestroyAtoms','oDestroy','sm_Destroy','ted_Destroy']
+svl> oType 0
+'system'
+svl> c = Chains[]
+svl> c
+563949953421335
+svl> cName c
+''
+svl> cSetName [c, 'formamide']
+svl> r = Residues[]
+svl> r
+563949953421321
+svl> rName r
+'*'
+svl> rSetName [r,'FAM']
+svl> Atoms[]
+[563949953421323,563949953421329,563949953421331,563949953421325,563949953421333,563949953421327]
+svl> SelectedAtoms[]
+[563949953421323,563949953421329,563949953421331]
+svl> aElement Atoms[]
+['N','H','H','C','H','O']
+svl> aSelected Atoms[]
+[1,1,1,0,0,0]
+svl> aSetSelected [Atoms[], [0,1,0,1,1,0]]
+svl> a = Atoms[]
+svl> a
+[563949953421323,563949953421329,563949953421331,563949953421325,563949953421333,563949953421327]
+svl> aElement a
+['N','H','H','C','H','O']
+svl> aMass a
+[14.01,1.008,1.008,12.011,1.008,16]
+svl> mass = aMass a
+svl> mw = add mass
+svl> mw
+45.045
+svl> sm_MatchAtoms['C=O',a]
+[ [], [], [], [563949953421325,563949953421327], [], [] ]
+svl> matches = sm_MatchAtoms['C=O',a]
+svl> aSetSelected [matches,1]
+svl> ls
+svl> aSetSelected [matches,1]
+svl> logfile[]
